@@ -14,7 +14,7 @@ npm install -g cordova
 Projeyi klonlamak için:
 ```bash
 git clone https://github.com/metatronslove/sihirli-kare-olusturucu-cordova-android-app.git
-cd sihirli-kare-olusturucu-cordova-android-app-main
+cd my-cordova-app
 ```
 
 ### 3. Otomatik Kurulum (Linux/macOS)
@@ -56,7 +56,8 @@ Eğer script'leri kullanmak istemiyorsanız, aşağıdaki adımları takip edin:
 
 5. **İkonları Kopyala**:
    ```bash
-   cp -r icon/* platforms/android/app/src/main/res/
+   mkdir platforms/android/app/src/main/res/icon
+   cp -r icon/* platforms/android/app/src/main/res/icon/
    ```
 
 6. **APK Oluştur**:
@@ -73,6 +74,7 @@ Eğer script'leri kullanmak istemiyorsanız, aşağıdaki adımları takip edin:
 
 ## Katkıda Bulunma
 Katkıda bulunmak isterseniz, lütfen bir pull request gönderin.
+
 ---
 
 ### **Düzeltmeler ve Açıklamalar**
@@ -87,6 +89,8 @@ Katkıda bulunmak isterseniz, lütfen bir pull request gönderin.
 
 3. **Hata Mesajları**:
    - Script'lerde her adım için açıklayıcı mesajlar ve hata durumlarında uygun hata mesajları eklenmiştir.
+
+---
 
 ## 🎁 Destek Ol
 **Çalışmalarımın sürmesine olanak sağlamak için bağışta bulunabilirsiniz.**

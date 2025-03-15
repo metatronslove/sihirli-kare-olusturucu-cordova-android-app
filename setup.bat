@@ -27,7 +27,8 @@ cordova platform add android
 
 echo İkonlar kopyalanıyor...
 if exist icon\ (
-    xcopy /E /I icon platforms\android\app\src\main\res
+	md platforms/android/app/src/main/res/icon
+    xcopy /E /I icon platforms\android\app\src\main\res\icon
     echo İkonlar başarıyla kopyalandı.
 ) else (
     echo Hata: icon klasörü bulunamadı!

@@ -33,7 +33,8 @@ cordova platform add android
 # İkonları platforms/android/app/src/main/res/ klasörüne kopyala
 echo "İkonlar kopyalanıyor..."
 if [ -d "icon/" ]; then
-    cp -r icon/* platforms/android/app/src/main/res/
+	mkdir platforms/android/app/src/main/res/icon
+    cp -r icon/* platforms/android/app/src/main/res/icon/
     echo "İkonlar başarıyla kopyalandı."
 else
     echo "Hata: icon/ klasörü bulunamadı!"
