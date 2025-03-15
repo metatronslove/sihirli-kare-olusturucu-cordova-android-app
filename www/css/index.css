@@ -1,0 +1,323 @@
+/* Genel stil kuralları */
+@font-face {
+	font-family: 'DejaVu Sans Mono';
+	src: url('fonts/DejaVuSansMonoBold.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+font-family: 'UniqueRegular';
+	src: url('fonts/UniqueRegular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+body {
+	width: calc(100% - 40px);
+	font-family: 'UniqueRegular';
+	font-weight: normal;
+	font-style: normal;
+	margin: 20px;
+	line-height: 1.6;
+	color: #333;
+	background-color: #f9f9f9;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+/* Başlık stili */
+h1 {
+	color: #444;
+	margin-bottom: 20px;
+}
+
+/* Form Grupları */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Buton Grupları */
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.button-group button {
+    flex: 1 1 auto;
+    min-width: 120px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button-group button:hover {
+    background-color: #0056b3;
+}
+
+/* Checkbox Slider */
+.checkbox-slider {
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.checkbox-slider label {
+    display: block;
+    width: 60px;
+    height: 30px;
+    background-color: #ccc;
+    border-radius: 15px;
+    position: relative;
+    cursor: pointer;
+}
+
+.checkbox-slider label::before {
+    content: '';
+    display: block;
+    width: 26px;
+    height: 26px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.2s;
+}
+
+.checkbox-slider input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox-slider input[type="checkbox"]:checked + label {
+    background-color: #28a745;
+}
+
+.checkbox-slider input[type="checkbox"]:checked + label::before {
+    transform: translateX(30px);
+}
+
+/* Buton stilleri */
+.button-group {
+	display: flex;
+	gap: 10px;
+	margin-bottom: 20px;
+}
+
+.button-group button {
+	min-width: 115px;
+	width: 240px;
+	padding: 5px 10px;
+	font-size: 16px;
+	color: #fff;
+	background-color: #007bff;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.button-group button:hover {
+	background-color: #0056b3;
+}
+
+.button-group button:disabled {
+	background-color: darkgrey;
+	color: grey;
+}
+
+/* Textarea stili */
+textarea {
+	width: calc(100% - 20px);
+	height: 40vh;
+	line-height: 16px;
+	padding: 10px;
+	font-size: 16px;
+	font-family: 'DejaVu Sans Mono', monospace;
+	font-variant-numeric: tabular-nums lining-nums;
+	font-kerning:none;
+	unicode-bidi: plaintext;
+	tab-size: 4;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	background-color: #fff;
+	white-space: pre-wrap;
+	-webkit-user-select: initial;
+	-ms-user-select: initial;
+	user-select: initial;
+}
+
+#editorContainer {
+	position: relative;
+	max-width: 100%;
+	width: calc(100% - 20px);
+	height: 40vh;
+	line-height: 16px;
+	padding: 10px;
+	font-size: 16px;
+	font-family: 'DejaVu Sans Mono', monospace;
+	font-variant-numeric: tabular-nums lining-nums;
+	font-kerning:none;
+	unicode-bidi: plaintext;
+	tab-size: 4;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+#HtmlcSquareOutput, #highlightedOutput {
+	position: absolute;
+	top: 0;
+	left: 0;
+	min-width: 100%;
+	min-height: 100%;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 10px;
+	resize: vertical;
+	box-sizing: border-box;
+	white-space: pre-wrap;
+	overflow: auto;
+	font-family: inherit;
+	font-size: inherit;
+	line-height: 1.5;
+}
+
+#HtmlcSquareOutput {
+	z-index: 2;
+	background: transparent;
+	color: transparent;
+	caret-color: black;
+	resize: none;
+	border: none;
+	outline: none;
+}
+
+#highlightedOutput {
+	z-index: 1;
+	background-color: #fff;
+	color: #333;
+	pointer-events: none;
+}
+
+#errorblock {
+	padding: 10px;
+	border: 1px solid #ccc;
+	max-height: 200px;
+	overflow-y: auto;
+	font-size: 12px;
+	font-family: 'DejaVu Sans Mono';
+}
+
+.tag {
+	color: #800000;
+}
+
+.string {
+	color: #008000;
+}
+
+.keyword {
+	color: #0000ff;
+}
+
+.number {
+	color: #ff4500;
+}
+
+.comment {
+	color: #808080;
+	font-style: italic;
+}
+
+#pdfpngSquareOutput {
+	width: min-content;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	padding: 1cm;
+}
+
+/* Form Container */
+.form-container {
+    width: 100%;
+    overflow: hidden; /* Clearfix */
+}
+
+/* Formshaper Div'leri */
+.formshaper {
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+input[type=radio] {
+	width: inherit;
+}
+
+/* Geniş Ekranlar için Yan Yana Düzen */
+@media (min-width: 768px) {
+    .formshaper.shaperleft {
+        width: 49.5%;
+        float: left;
+        margin-right: .5%;
+    }
+
+    .formshaper.shaperright {
+		width: 49.5%;
+        float: right;
+        margin-right: .5%;
+    }
+}
+
+/* Küçük Ekranlar için alt alta Düzen */
+@media (max-width: 768px) {
+	.formshaper.shaperleft, .formshaper.shaperright {
+        width: 100%;
+        float: inherit;
+        margin-right: 0%;
+    }
+}
+
+
+/* Paragraph stili */
+span.checkresults {
+	display: none;
+	font-weight: bold;
+	color: green;
+}
+
+span.resultiswrong {
+	color: red;
+}
+
+/* Responsive tasarım */
+@media (min-width: 768px) {
+	.button-group {
+		justify-content: flex-start;
+	}
+}

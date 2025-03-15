@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta property="og:title" content="Sihirli Kare Oluşturucu - Her Boyutta ve Formatta Sihirli Kareler">
+	<meta property="og:description" content="PDF, PNG, TXT ve HTML formatlarında, istediğiniz boyutta ve satır toplamında sihirli kareler oluşturun. Hızlı, pratik ve ücretsiz!">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://metatronslove.github.io/magic-square-generator/">
+	<meta property="og:image" content="img/four-hundred-eighty-kilograms-of-gold-worth-open-graph-image.png">
+	<meta property="og:site_name" content="Sihirli Kare Oluşturucu">
+	<meta property="og:locale" content="tr_TR">
+	<link rel="stylesheet" href="css/index.css">
+    <title>Sihirli Kare Oluşturucu</title>
+    <script src="cordova.js"></script>
+    <script src="cordova_plugins.js"></script>
+	<script src="js/index.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/html2canvas.min.js"></script>
+    <script src="js/jspdf.umd.min.js"></script>
+    <script src="js/magicsquare.js"></script>
+</head>
+<body id="MagicSquare">
+	<h1 turkishcontent="Sihirli Kare Oluşturucu" englishcontent="Magic Square Creator">Sihirli Kare Oluşturucu</h1>
+	<!-- Form alanı -->
+	<div class="form-container">
+	<div class="formshaper shaperleft">
+		<section>
+			<div class="form-group">
+				<label for="rows" turkishcontent="Kare Boyutu:" englishcontent="Square Size:">Kare Boyutu:</label>
+				<input type="number" id="rows" min="3" value="3" style="width: 100%;">
+			</div>
+			<div id="algorithms" class="form-group">
+			</div>
+			<div class="form-group">
+				<label for="expectedRowSum" turkishcontent="Satır Toplamı:" englishcontent="Row Sum:">Satır Toplamı:</label>
+				<input type="number" id="expectedRowSum" min="15" value="15" style="width: 100%;">
+			</div>
+
+			<!-- Butonlar -->
+			<div class="button-group">
+				<button onclick="generateMagicSquare()" style="width: calc(100% - 100px);" turkishcontent="Sihirli Kare Oluştur" englishcontent="Create Magic Square">Sihirli Kare Oluştur</button>
+				<section id="lockpressed" title="Basılı tut">
+					<div class="checkbox-slider">
+						<input type="checkbox" id="lockcreator" name="lockcreator">
+						<label for="lockcreator"></label>
+					</div>
+				</section>
+			</div>
+			<div class="button-group">
+				<section id="numberswitcher" title="Arab to Indian Numbers">
+					<div class="checkbox-slider">
+						<input type="checkbox" id="numberswitch" name="numberswitch" disabled="disabled">
+						<label for="numberswitch"></label>
+					</div>
+				</section>
+				<button onclick="rotateTheSquare()" style="width: calc(calc(100% - 110px) / 2);" turkishcontent="Döndür" englishcontent="Rotate">Döndür</button>
+				<button onclick="mirrorTheSquare()" style="width: calc(calc(100% - 110px) / 2);" turkishcontent="Aynala" englishcontent="Mirror">Aynala</button>
+			</div>
+			<div class="form-group">
+				<select id="language" name="language" title="" style="width: 100%;">
+					<option value="english" turkishcontent="English" englishcontent="English">English</option>
+					<option value="turkish" selected="selected" turkishcontent="Türkçe" englishcontent="Türkçe">Türkçe</option>
+				</select>
+			</div>
+		</section>
+	</div>
+	<div class="formshaper shaperright">
+		<div id="squaremagic" class="form-group">
+			<label for="squareoutas"><span turkishcontent="Çıktı biçemi: " englishcontent="Output format: ">Çıktı biçemi: </span></label>
+			<select id="squareoutas" name="squareoutas" title="" style="width: 100%;">
+				<option value="tabs" turkishcontent="Tab'la ayrılmış metin" englishcontent="Tab seperated text" selected="selected">Tab'la ayrılmış metin</option>
+				<option value="boxed" turkishcontent="Tablolanmış metin" englishcontent="Boxed text">Tablolanmış metin</option>
+				<option value="html" turkishcontent="Html biçeminde kod" englishcontent="Html formatted code">Html biçeminde kod</option>
+				<option value="pdf" turkishcontent="PDF biçeminde belge" englishcontent="PDF document">PDF biçeminde belge</option>
+				<option value="png" turkishcontent="PNG biçeminde resim" englishcontent="PNG image">PNG biçeminde resim</option>
+			</select>
+			<div id="magicabilitiesfortabs" class="form-group">
+				<p align="justify" style="width: 100%;" turkishcontent="Tab boşluk ayraçlarıyla satırlarda sıralanmış sihirli kare hücreleri, metin düzenleme programlarında yeterince okunabilirliği yüksek bir görünüm kazanır. Microsoft Excel, LibreOffice Hesap Tablosu, Google E-tablolar gibi elektronik tablolama yazılımlarında kopyala ve yapıştır tekniği ile kolayca veri girişi olarak tablolara eklemede alışılageldik bir seçenek oluşu yadsınamaz." englishcontent="Cells of a magic square arranged in rows separated by tab spaces gain a sufficiently readable appearance in text editing programs. It is undeniable that using the copy and paste technique in spreadsheet software such as Microsoft Excel, LibreOffice Calc, and Google Sheets has become a conventional option for easily adding data to tables as input.">:)</p>
+			</div>
+			<div id="magicabilitiesforboxed" class="form-group" style="display: none; width: 100%;">
+				<div id="borderslabel" class="form-group" style="width: 100%;">
+					<label for="borders" turkishcontent="Kutu kenarları: " englishcontent="Box borders: ">Kutu kenarları: </label>
+					<select id="borders" name="borders" class="" title="" style="width: 100%;">
+						<option value=0 selected="selected">┌──────────┘</option>
+						<option value=1>┌┄┄┄┄┄┄┄┄┄┄┘</option>
+						<option value=2>┏┅┅┅┅┅┅┅┅┅┅┛</option>
+						<option value=3>╭──────────╯</option>
+						<option value=4>┏━━━━━━━━━━┛</option>
+						<option value=5>╔══════════╝</option>
+					</select>
+				</div>
+				<div id="cellheightlabel" class="form-group" style="width: 100%;">
+					<label for="cellheight" turkishcontent="Hücre yüksekliği: " englishcontent="Cell height: ">Hücre yüksekliği: </label>
+					<input title="" id="cellheight" name="cellheight" value=0 type="number" min=0 max=20 step=1 style="width: 100%;">
+				</div>
+				<div id="cellwidthlabel" class="form-group" style="width: 100%;">
+					<label for="cellwidth" turkishcontent="Hücre genişliği: " englishcontent="Cell width: ">Hücre genişliği: </label>
+					<input title="" id="cellwidth" name="cellwidth" value=0 type="number" min=0 max=20 step=1 style="width: 100%;">
+				</div>
+			</div>
+			<div id="magicabilitiesforhtmlc" style="display: none;" class="form-group">
+				<label style="text-align: left;"><span turkishcontent="Mürekkep rengi: " englishcontent="Ink color: ">Mürekkep rengi: </span><input type="color" id="borderColor" value="#000000" style="width: calc(100%);"></label>
+				<div class="form-group" style="width: 100%;">
+				<fieldset style="width: calc(100% - 30px);">
+					<legend turkishcontent="Yatırma başlama yönü" englishcontent="Rotation start direction">Yatırma başlama yönü</legend>
+					<label style=""><input style="min-width: 0px;" type="radio" name="rotationStart" value="left" checked><span turkishcontent="İlk hücre sola (-45°)" englishcontent="Left (-45°) for first cell">İlk hücre sola (-45°)</span></label>
+					<label style=""><input style="min-width: 0px;" type="radio" name="rotationStart" value="right"><span turkishcontent="İlk hücre sağa (+45°)" englishcontent="Right (+45°) for first cell">İlk hücre sağa (+45°)</span></label>
+					<label style=""><input style="min-width: 0px;" type="radio" name="rotationStart" value="none"><span turkishcontent="Yatırma yok" englishcontent="No rotation">Yatırma yok</span></label>
+				</fieldset>
+				</div>
+				<div class="form-group" style="width: 100%;">
+					<label for="paper-sizes" turkishcontent="Belge boyutu seçin:" englishcontent="Select a document size:">Belge boyutu seçin:</label>
+					<select id="paper-sizes" name="paper-sizes" style="width: 100%;">
+						<option value="KUC" turkishcontent="İçeriğin sığacağı hayali ölçüler" englishcontent="Dream sized, contains content">İçeriğin sığacağı hayali ölçüler</option>
+						<option disabled turkishcontent="─────────────────────────" englishcontent="─────────────────────────────">─────────────────────────</option>
+						<option value="A5P" turkishcontent="A5 - Dikey (148 x 210 mm)" englishcontent="A5 - Portrait (148 x 210 mm)">A5 - Dikey (148 x 210 mm)</option>
+						<option value="A4P" turkishcontent="A4 - Dikey (210 x 297 mm)" englishcontent="A4 - Portrait (210 x 297 mm)">A4 - Dikey (210 x 297 mm)</option>
+						<option value="A3P" turkishcontent="A3 - Dikey (297 x 420 mm)" englishcontent="A3 - Portrait (297 x 420 mm)">A3 - Dikey (297 x 420 mm)</option>
+						<option disabled turkishcontent="─────────────────────────" englishcontent="─────────────────────────────">─────────────────────────</option>
+						<option value="A5L" turkishcontent="A5 - Yatay (210 x 148 mm)" englishcontent="A5 - Landscape (210 x 148 mm)">A5 - Yatay (210 x 148 mm)</option>
+						<option value="A4L" turkishcontent="A4 - Yatay (297 x 210 mm)" englishcontent="A4 - Landscape (297 x 210 mm)">A4 - Yatay (297 x 210 mm)</option>
+						<option value="A3L" turkishcontent="A3 - Yatay (420 x 297 mm)" englishcontent="A3 - Landscape (420 x 297 mm)">A3 - Yatay (420 x 297 mm)</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<!-- Sihirli kare çıktısı -->
+	<section>
+		<div class="form-group">
+			<label for="MagicSquareOutput"><span turkishcontent="Sihirli Kare: " englishcontent="Magic Square: ">Sihirli Kare: </span><span id="checksquare"></span></label>
+			<textarea id="MagicSquareOutput" readonly rotated="0" flipped="false" omode="0" style="tab-size: 10;"></textarea>
+			<textarea id="BoxedSquareOutput" readonly style="display: none;"></textarea>
+			<div id="editorContainer" style="display: none;">
+				<textarea id="HtmlcSquareOutput" readonly style="display: none;"></textarea>
+				<div id="highlightedOutput" style="display: none;"></div>
+			</div>
+			<div id="pdfpngSquareOutput" style="display: none;"></div>
+		</div>
+		<div class="button-group">
+			<button disabled="disabled" onclick="copyToClipboard()" turkishcontent="Panoya Kopyala" englishcontent="Copy to clipboard">Panoya Kopyala</button>
+			<button disabled="disabled" onclick="saveToLocalDisk()" turkishcontent="Dosyayı Kaydet" englishcontent="Save File">Dosyayı Kaydet</button>
+		</div>
+	</section>
+	<section>
+		<div id="errorblock"></div>
+		<div class="button-group">
+			<button onclick="document.getElementById('errorblock').innerHTML = '';">Temizle</button>
+		</div>
+	</section>
+	<center><p class="spellcounter"><img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white" title="attributes are great">&nbsp;<img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white" title="style is more than make up">&nbsp;<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black" title="live Frenkanstein!"></p><p><h2>🎁 Destek Ol</h2>
+<p><strong>Çalışmalarımın sürmesine olanak sağlamak için bağışta bulunabilirsiniz.</strong></p>
+<p><em>Lütfen bağış yapmadan önce en az iki kere düşünün çünkü geri ödemeler için ayıracak hiç zamanım ve imkanım yok.</em></p>
+<p><strong>Katkılarınız için paylaştıklarımı kullanan herkes adına teşekkürlerimi kabul edin.</strong></p>
+
+<h2>🎁 Support Me</h2>
+<p><strong>You can support me to keep my projects alive.</strong></p>
+<p><em>Please think twice before donating because I have no time or means to handle refunds.</em></p>
+<p><strong>On behalf of everyone who uses what I share, I accept your thanks for your contributions.</strong></p>
+
+<p><a href="https://ppr.ist/1T9dx8tUT" target="_blank">
+  <img src="https://img.shields.io/badge/Bağış Yap-%E2%9D%A4-blue" alt="Papara ile Destekle">
+</a>
+
+<a href="https://ppr.ist/1T9dx8tUT" target="_blank">
+  <img src="https://img.shields.io/badge/Donate-%E2%9D%A4-blue" alt="Donate using Papara">
+</a></p>
+
+<p><a href="https://ppr.ist/1T99dYF5X" target="_blank">
+  <img src="img/1513592797QR.png" alt="Papara ile Desteklen">
+</a></p></p></center>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.sihirli_kare_olusturucu.msapp" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <name>Sihirli Kare Oluşturucu</name>
+    <description>PDF, PNG, TXT ve HTML formatlarında, istediğiniz boyutta ve satır toplamında sihirli kareler oluşturun. Hızlı, pratik ve ücretsiz!</description>
+    <author email="maviveyesil83@gmail.com" href="https://one.fanclub.rocks">
+        Abdil Murat ÜNALAN
+    </author>
+    <platform name="android">
+		<icon src="platforms/android/app/src/main/res/icon/android/icon-48-mdpi.png" density="mdpi" />
+		<icon src="platforms/android/app/src/main/res/icon/android/icon-72-hdpi.png" density="hdpi" />
+		<icon src="platforms/android/app/src/main/res/icon/android/icon-96-xhdpi.png" density="xhdpi" />
+		<icon src="platforms/android/app/src/main/res/icon/android/icon-144-xxhdpi.png" density="xxhdpi" />
+		<icon src="platforms/android/app/src/main/res/icon/android/icon-192-xxxhdpi.png" density="xxxhdpi" />
+		<config-file parent="/*" target="AndroidManifest.xml">
+			<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+			<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+			<uses-permission android:name="android.permission.INTERNET" />
+		</config-file>
+	</platform>
+    <content src="index.html" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+</widget>
