@@ -1,6 +1,3 @@
-### **Güncellenmiş README.md**
-
-```markdown
 # Sihirli Kare Oluşturucu
 
 Bu proje, GitHub'daki bir web sayfasını Cordova ile mobil uygulamaya dönüştürmek için oluşturulmuştur.
@@ -76,8 +73,6 @@ Eğer script'leri kullanmak istemiyorsanız, aşağıdaki adımları takip edin:
 
 ## Katkıda Bulunma
 Katkıda bulunmak isterseniz, lütfen bir pull request gönderin.
-```
-
 ---
 
 ### **Düzeltmeler ve Açıklamalar**
@@ -92,8 +87,6 @@ Katkıda bulunmak isterseniz, lütfen bir pull request gönderin.
 
 3. **Hata Mesajları**:
    - Script'lerde her adım için açıklayıcı mesajlar ve hata durumlarında uygun hata mesajları eklenmiştir.
-
----
 
 ## 🎁 Destek Ol
 **Çalışmalarımın sürmesine olanak sağlamak için bağışta bulunabilirsiniz.**
