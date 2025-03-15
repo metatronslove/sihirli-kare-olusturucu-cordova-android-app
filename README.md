@@ -14,7 +14,7 @@ npm install -g cordova
 Projeyi klonlamak için:
 ```bash
 git clone https://github.com/metatronslove/sihirli-kare-olusturucu-cordova-android-app.git
-cd my-cordova-app
+cd sihirli-kare-olusturucu-cordova-android-app-main
 ```
 
 ### 3. Otomatik Kurulum (Linux/macOS)
